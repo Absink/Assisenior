@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+.back{
+	background-color: rgb(197, 197, 197);
+	height:728px;
+}
+
+h3{
+	text-align: center;
+	color: black !important;
+	font-weight: normal !important;
+}
+
+.zoneSaisieLogin{
+	background: rgba(0,0,0,0.666);
+	border-radius: 15px;
+	color: green;
+}
+
+.centring{
+	text-align: center;
+	overflow: auto;
+}
