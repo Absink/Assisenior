@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class AssistedPerson implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Iddf g 
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
