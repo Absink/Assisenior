@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.assisenior.chat.Appli;
-import com.assisenior.model.User;
-import com.assisenior.service.UserService;
+import com.assisenior.model.Contact;
+import com.assisenior.service.ContactService;
 
 /**
  * Servlet implementation class LoginServlet
@@ -63,16 +63,16 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		User user = UserService.find(request.getParameter("login"), request.getParameter("password"));
+		Contact contact = ContactService.findByLogin(request.getParameter("login"), request.getParameter("password"));
 		RequestDispatcher dispat;
 
-		if (user != null) {
+		if (contact != null) {
 			HttpSession session = request.getSession();
 			Appli.addSessionConnected(session);
 			session.setAttribute("login",request.getParameter("login"));
 			session.setAttribute("password",request.getParameter("password"));
 			session.setAttribute("connected", true);
-			session.setAttribute("utilisateur", user);
+			session.setAttribute("utilisateur", contact);
 
 			WelcomeServlet.loginMessage = "Deconnexion";
 			request.setAttribute("loginMessage", WelcomeServlet.loginMessage);
