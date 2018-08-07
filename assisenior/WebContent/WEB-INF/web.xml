@@ -28,4 +28,12 @@
     <servlet-name>ContactServlet</servlet-name>
     <url-pattern>/contact</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>DetectionChute</servlet-name>
+    <servlet-class>com.assisenior.servlet.DetectionChute</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetectionChute</servlet-name>
+    <url-pattern>/detection_chute</url-pattern>
+  </servlet-mapping>
 </web-app>
