@@ -21,7 +21,7 @@ public class UserService {
 
 
 	public static User create(User user) {
-		query = em.createQuery("SELECT u FROM User u WHERE u.login = :param");
+		query = em.createQuery("SELECT c FROM contact c WHERE c.login = :param");
 		query.setParameter("param", user.getLogin());
 		List results = (List) query.getResultList();
 		Iterator it = results.iterator();
@@ -44,7 +44,7 @@ public class UserService {
 
 
 	public static User find(String login, String password) {
-		query = em.createQuery("SELECT u FROM User u WHERE u.login = :login AND u.password = :pass");
+		query = em.createQuery("SELECT c FROM contact c WHERE c.login = :login AND c.password = :pass");
 		query.setParameter("login", login);
 		query.setParameter("pass", password);
 		

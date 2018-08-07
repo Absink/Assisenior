@@ -9,8 +9,8 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="user")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+@Table(name="contact")
+@NamedQuery(name="contact.findAll", query="SELECT c FROM contact c")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -22,15 +22,15 @@ public class User implements Serializable {
 
 	private String password;
 	
-	private String email;
+//	private String email;
 
 	public User() {
 	}
 	
-	public User(String login, String password, String email) {
+	public User(String login, String password) {
 		this.login = login;
 		this.password = password;
-		this.email = email;
+//		this.email = email;
 	}
 
 	public int getId() {
@@ -42,13 +42,13 @@ public class User implements Serializable {
 	}
 
 
-	public String getEmail() {
-		return this.email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+//	public String getEmail() {
+//		return this.email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 
 	public String getLogin() {
 		return this.login;
