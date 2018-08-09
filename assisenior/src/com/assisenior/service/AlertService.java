@@ -16,11 +16,11 @@ public class AlertService {
 	/* Type d'incident :
 	 * 1)chute
 	 * 2)appel a l'aide
-	 * 3)position intérieure
+	 * 3)position intÃ©rieure
 	 * 4)rythme cardiaque
 	 * 5)position exterieur
 	 * 
-	 * Type criticité :
+	 * Type criticitÃ© :
 	 * 1)appel secours
 	 * 2)appel contact
 	 */
@@ -31,37 +31,37 @@ public class AlertService {
 	private static Query query;
 	
 		
-	public static void alerter (int typeIncident, int criticité, int assistedPerson) {				
+	public static void alerter (int typeIncident, int criticite, int assistedPerson) {				
 		String incident;
 		switch(typeIncident) {
 			case 1: incident = "Chute";
-			case 2: incident = "Appel à l'aide";
-			case 3: incident = "Immobilité longue dans une pièce";
-			case 4: incident = "Problème cardiaque";
-			case 5: incident = "Sortie du périmètre extérieur";
+			case 2: incident = "Appel a l'aide";
+			case 3: incident = "ImmobilitÃ© longue dans une piÃ¨ce";
+			case 4: incident = "ProblÃ¨me cardiaque";
+			case 5: incident = "Sortie du pÃ¨rimÃ¨tre exterieur";
 		}		
-		//TODO : Créer fonction de service "AssistedPersonService" pour trouver assistedPerson par id
+		//TODO : CrÃ©er fonction de service "AssistedPersonService" pour trouver assistedPerson par id
 		//assistedPerson = AssistedPersonService.findById(assistedPerson);
-		if(criticité == 1) {
+		if(criticite == 1) {
 			appelSecours(incident);
-		} else if (criticité == 2) {
+		} else if (criticite == 2) {
 			appelProche(incident, assistedPerson);
 		}
 	}
 	
 	private static void appelSecours(String incident) {
 		/* TODO : 
-		 * - récupérer le tel des secours
+		 * - rÃ©cupÃ©rer le tel des secours
 		 * - appel secours
 		 */
 	}
 	
 	private static void appelProche(String incident, AssistedPerson person) {
 		/* TODO : 
-		 * - récupérer a liste des proches par priority
-		 * - récupérer le téléphone
+		 * - rÃ©cupÃ©rer la liste des proches par priority
+		 * - rÃ©cupÃ©rer le tÃ©lÃ©phone
 		 * - appel du premier, deuxieme .... 
-		 * - Si pas de réponse, lancer méthode 'appelSecours'
+		 * - Si pas de rÃ©ponse, lancer mÃ©thode 'appelSecours'
 		 */
 	}
 }
