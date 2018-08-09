@@ -18,7 +18,7 @@ public class DetectionChuteService {
 	private static Query query;
 	
 	
-	public static void dataChute (int x, int y, int z) {
+	public static void dataChute (float alpha, float beta, float gamma) {
 		
 	}
 
