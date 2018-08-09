@@ -31,17 +31,16 @@ public class AlertService {
 	private static Query query;
 	
 		
-	public static void alerter (int typeIncident, int criticite, int assistedPerson) {				
-		String incident;
+	public static void alerter (int typeIncident, int criticite, int idAssistedPerson) {				
+		String incident = null;
 		switch(typeIncident) {
 			case 1: incident = "Chute";
 			case 2: incident = "Appel a l'aide";
 			case 3: incident = "Immobilité longue dans une pièce";
 			case 4: incident = "Problème cardiaque";
 			case 5: incident = "Sortie du pèrimètre exterieur";
-		}		
-		//TODO : Créer fonction de service "AssistedPersonService" pour trouver assistedPerson par id
-		//assistedPerson = AssistedPersonService.findById(assistedPerson);
+		}
+		AssistedPerson assistedPerson = AssistedPersonService.findById(idAssistedPerson);
 		if(criticite == 1) {
 			appelSecours(incident);
 		} else if (criticite == 2) {

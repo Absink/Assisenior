@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.assisenior.model.Contact;
+import com.assisenior.service.AssistedPersonService;
 import com.assisenior.service.ContactService;
 
 /**
