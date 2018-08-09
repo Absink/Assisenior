@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 import com.assisenior.service.DetectionChuteService;
 
 @WebServlet("/DetectionChute")
-public class DetectionChute extends HttpServlet {
+public class DetectionChuteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String VIEW_PAGES_URL="/WEB-INF/detectionChute.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DetectionChute() {
+	public DetectionChuteServlet() {
 		super();
 	}
 

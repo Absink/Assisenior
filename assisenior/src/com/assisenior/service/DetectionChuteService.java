@@ -12,7 +12,7 @@ import javax.persistence.Query;
 public class DetectionChuteService {
 	
 	@PersistenceContext
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("assisenior");;	
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("assisenior");
 	
 	private static EntityManager em = factory.createEntityManager();
 	private static Query query;
