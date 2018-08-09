@@ -24,5 +24,24 @@ public class ContactService {
 		query.setParameter("param", idPerson);
 		return (List) query.getResultList();
 	}
+	
+	public static Contact findByLogin(String login, String password) {
+		query = em.createQuery("SELECT c FROM Contact c WHERE c.login = :login AND c.password = :pass");
+		query.setParameter("login", login);
+		query.setParameter("pass", password);
+		
+		List results = (List) query.getResultList();
+		Contact contact = new Contact();
+		for(int i=0; i < results.size(); i++) {
+			contact = (Contact) results.get(i);
+			break;
+		}
+		
+		if (login.equalsIgnoreCase(contact.getLogin()) && password.equals(contact.getPassword())) {
+			return contact;
+		} else {
+			return null;
+		}
+	}
 
 }
