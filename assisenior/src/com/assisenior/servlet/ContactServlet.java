@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.assisenior.model.Contact;
+import com.assisenior.service.AlertService;
 import com.assisenior.service.AssistedPersonService;
 import com.assisenior.service.ContactService;
 
@@ -39,7 +40,8 @@ public class ContactServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		HttpSession session = request.getSession();
 		request.setAttribute("loginMessage", "Deconnexion");	
-		boolean connected = session.getAttribute("connected") != null;		
+		boolean connected = session.getAttribute("connected") != null;
+		AlertService.alerter(1, 2, 1);
 		
 		//
 /*

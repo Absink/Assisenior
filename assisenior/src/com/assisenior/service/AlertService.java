@@ -49,6 +49,7 @@ public class AlertService {
 	}
 	
 	private static void appelSecours(String incident) {
+		System.out.println("[ASSISENIOR] APPEL SECOURS");
 		/* TODO : 
 		 * - récupérer le tel des secours
 		 * - appel secours
@@ -56,11 +57,50 @@ public class AlertService {
 	}
 	
 	private static void appelProche(String incident, AssistedPerson person) {
-		/* TODO : 
-		 * - récupérer la liste des proches par priority
-		 * - récupérer le téléphone
-		 * - appel du premier, deuxieme .... 
-		 * - Si pas de réponse, lancer méthode 'appelSecours'
-		 */
+		System.out.println("[ASSISENIOR] APPEL PROCHES");
+		
+		// Répuparation de la liste de contacts
+		List<Contact> contacts = ContactService.ListForPerson(person.getId());
+		int countAppel = 0;
+		int priority = 1;
+		boolean réponseContact = false;
+		
+		// Appel des contacts par ordre de priorité
+		while(!réponseContact && contacts.size() != countAppel) {
+			for (Contact c: contacts) {
+				if(c.getPriority()==priority) {
+					countAppel++;
+					if(réponse(c)){
+						System.out.println("[ASSISENIOR] COMMUNICATION ETABLIE AVEC " +c.getLastname() + " " +c.getFirstname());
+						réponseContact = true;
+						break;					
+					}
+					priority++;
+				}
+			}
+		}
+		
+		// Appel des secours
+		if(!réponseContact) {
+			System.out.println("[ASSISENIOR] AUCUNE REPONSES DES CONTACTS");
+			appelSecours(incident);
+		}			
+	}
+	
+	
+	private static boolean réponse(Contact c) {
+		// Simulation d'appel
+		System.out.println("Appel au " + c.getPhone() +"...");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		// Test réponse pour simulation
+		if(c.getPhone().equals("0203010203"))
+			return true;
+		else
+			return false;
 	}
 }

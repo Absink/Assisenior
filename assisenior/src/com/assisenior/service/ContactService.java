@@ -19,9 +19,8 @@ public class ContactService {
 	private static Query query;
 	
 		
-	public static List<Contact> find(int idPerson) {
-		query = em.createQuery("SELECT c FROM Contact c WHERE c.for_person = :param1");
-		query.setParameter("param", idPerson);
+	public static List<Contact> ListForPerson(int idPerson) {
+		query = em.createQuery("SELECT c FROM Contact c WHERE c.for_person=" + idPerson);
 		return (List) query.getResultList();
 	}
 	
