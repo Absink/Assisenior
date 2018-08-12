@@ -20,9 +20,6 @@ public class navServlet extends HttpServlet {
 
 	public static String PERSISTANCE_NAME="assisenior";
 	public static String loginMessage = "Deconnexion";
-	String actionMessage;
-	String display;
-	String title;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -37,12 +34,10 @@ public class navServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println("### " + session.getId());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session = request.getSession();
-		System.out.println("### 2 " + session.getId());
 
 	}
 }

@@ -19,7 +19,7 @@ public class DetectionChuteService {
 	
 	
 	public static void dataChute (float alpha, float beta, float gamma) {
-		
+		System.out.println("[ASSISENIOR] APPEL SECOURS");
 	}
 
 }

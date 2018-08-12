@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="col-lg-12 text-center">
 			<br/>
-				<h2>Selection des modifications</h2>
+				<h2>Paramètres</h2>
 				<hr class="star-primary">
 			</div>
 		</div>
@@ -35,19 +35,24 @@
 			<div class="col-lg-12 text-center" style="margin-top: 59px;"></div>
 		</div>
 		<div class="row">
-			<div class="col-sm-4 portfolio-item">
+			<div class="col-sm-12 portfolio-item">
 				<a href="/assisenior/contact" class="portfolio-link" data-toggle="modal">
 					<h2>Contacts</h3>
 				</a>
 			</div>
-			<div class="col-sm-4 portfolio-item">
-				<a href="/assisenior/profil" class="portfolio-link" data-toggle="modal">
-					<h2>Profils</h3>
-				</a>
-			</div>
-			<div class="col-sm-4 portfolio-item">
+			<div class="col-sm-12 portfolio-item">
 				<a href="/assisenior/capteur" class="portfolio-link" data-toggle="modal">
 					<h2>Capteurs</h3>
+				</a>
+			</div>
+			<div class="col-sm-12 portfolio-item">
+				<a href="/assisenior/keyword" class="portfolio-link" data-toggle="modal">
+					<h2>Mots-Clés</h3>
+				</a>
+			</div>
+			<div class="col-sm-12 portfolio-item">
+				<a href="/assisenior/room" class="portfolio-link" data-toggle="modal">
+					<h2>Pièces</h3>
 				</a>
 			</div>
 			<div class="col-sm-3 portfolio-item"></div>
