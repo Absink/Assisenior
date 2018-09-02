@@ -23,7 +23,7 @@ public class AssistedPersonService {
 		query.setParameter("id", id);		
 		List results = (List) query.getResultList();
 		
-		AssistedPerson assistedPerson = new AssistedPerson();
+		AssistedPerson assistedPerson = AssistedPerson.getInstance();
 		for(int i=0; i < results.size(); i++) {
 			assistedPerson = (AssistedPerson) results.get(i);
 			break;

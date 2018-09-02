@@ -1,6 +1,7 @@
 package com.assisenior.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,8 +43,14 @@ public class AssistedPerson implements Serializable {
 	
 	private int referent_admin;
 
+	// une seule personne a monitorer --> Singleton
+	private AssistedPerson() {
+	}
 	
-	public AssistedPerson() {
+	private static AssistedPerson instance = new AssistedPerson() ;
+	
+	public static AssistedPerson getInstance() {
+			      return instance ;
 	}
 	
 	public AssistedPerson(String lastname, String firstname, String phone) {
@@ -52,6 +59,46 @@ public class AssistedPerson implements Serializable {
 		this.phone = phone;
 	}
 
+	public int getMaximumHeartRate() {
+		
+		
+		
+		if (this.getMaxHeartRateThreshold()!=0) {
+			// si une spécification médicale fait que le rythme max est donné en base
+			return this.getMaxHeartRateThreshold();
+		}else {
+			
+			// calcul de l'age
+			
+				//récupérer année de naissance
+			String dateNaissance = this.getDdnaissance();
+			String anneeNaissance=dateNaissance.substring(0, 3);
+			int anneeNaissanceInt=Integer.parseInt(anneeNaissance);
+			
+				//récupérer année en cours
+			
+			Calendar c = Calendar.getInstance();
+			int year = c.get(Calendar.YEAR);
+			
+			
+			int age=year-anneeNaissanceInt;
+			
+			// calcul fréquence cardiaque maximale = 191.5 - 0.007 x âge²
+			
+			System.out.println("Fréquence max = "+ (191.5-(0.007*Math.sqrt(age))));			
+			return (int) (191.5-(0.007*Math.sqrt(age)));
+			
+		}
+		
+		
+
+		
+	}
+	
+
+	
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -61,7 +108,7 @@ public class AssistedPerson implements Serializable {
 	}
 
 	public String getDdnaissance() {
-		return ddnaissance;
+		return "1970-01-01";
 	}
 
 	public void setDdnaissance(String ddnaissance) {
@@ -101,7 +148,7 @@ public class AssistedPerson implements Serializable {
 	}
 
 	public int getMinHeartRateThreshold() {
-		return minHeartRateThreshold;
+		return 60;
 	}
 
 	public void setMinHeartRateThreshold(int minHeartRateThreshold) {
@@ -109,7 +156,7 @@ public class AssistedPerson implements Serializable {
 	}
 
 	public int getMaxHeartRateThreshold() {
-		return maxHeartRateThreshold;
+		return 0;
 	}
 
 	public void setMaxHeartRateThreshold(int maxHeartRateThreshold) {
