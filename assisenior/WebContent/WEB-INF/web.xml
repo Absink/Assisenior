@@ -36,4 +36,12 @@
     <servlet-name>DetectionChute</servlet-name>
     <url-pattern>/detection_chute</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>HeartMonitoring</servlet-name>
+    <servlet-class>com.assisenior.servlet.HeartMonitoringServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HeartMonitoring</servlet-name>
+    <url-pattern>/heartMonitoring</url-pattern>
+  </servlet-mapping>
 </web-app>
