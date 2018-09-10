@@ -59,7 +59,7 @@ public class AlertService {
 	private static void appelProche(String incident, AssistedPerson person) {
 		System.out.println("[ASSISENIOR] APPEL PROCHES");
 		
-		// Répuparation de la liste de contacts
+		// Récuperation de la liste de contacts
 		List<Contact> contacts = ContactService.ListForPerson(person.getId());
 		int countAppel = 0;
 		int priority = 1;
