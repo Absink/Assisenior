@@ -63,16 +63,16 @@ public class AlertService {
 		List<Contact> contacts = ContactService.ListForPerson(person.getId());
 		int countAppel = 0;
 		int priority = 1;
-		boolean réponseContact = false;
+		boolean reponseContact = false;
 		
 		// Appel des contacts par ordre de prioritÃ©
-		while(!réponseContact && contacts.size() != countAppel) {
+		while(!reponseContact && contacts.size() != countAppel) {
 			for (Contact c: contacts) {
 				if(c.getPriority()==priority) {
 					countAppel++;
-					if(réponse(c)){
+					if(reponse(c)){
 						System.out.println("[ASSISENIOR] COMMUNICATION ETABLIE AVEC " +c.getLastname() + " " +c.getFirstname());
-						réponseContact = true;
+						reponseContact = true;
 						break;					
 					}
 					priority++;
@@ -81,14 +81,14 @@ public class AlertService {
 		}
 		
 		// Appel des secours
-		if(!réponseContact) {
+		if(!reponseContact) {
 			System.out.println("[ASSISENIOR] AUCUNE REPONSES DES CONTACTS");
 			appelSecours(incident);
 		}			
 	}
 	
 	
-	private static boolean réponse(Contact c) {
+	private static boolean reponse(Contact c) {
 		// Simulation d'appel
 		System.out.println("Appel au " + c.getPhone() +"...");
 		try {
