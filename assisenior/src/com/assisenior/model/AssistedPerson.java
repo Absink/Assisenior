@@ -43,7 +43,6 @@ public class AssistedPerson implements Serializable {
 	
 	private int referent_admin;
 
-	// une seule personne a monitorer --> Singleton
 	private AssistedPerson() {
 	}
 	
@@ -63,36 +62,25 @@ public class AssistedPerson implements Serializable {
 		if (this.getMaxHeartRateThreshold()!=0) {
 			// si une specification medicale fait que le rythme max est donne en base
 			return this.getMaxHeartRateThreshold();
-		}else {
-			
+		}else {		
 			// calcul de l'age
 			
-				//recuperer annee de naissance
+			// recuperer annee de naissance
 			String dateNaissance = this.getDdnaissance();
 			String anneeNaissance=dateNaissance.substring(0, 3);
 			int anneeNaissanceInt=Integer.parseInt(anneeNaissance);
 			
-				//recuperer annee en cours
-			
+			// recuperer annee en cours			
 			Calendar c = Calendar.getInstance();
-			int year = c.get(Calendar.YEAR);
-			
-			
+			int year = c.get(Calendar.YEAR);		
 			int age=year-anneeNaissanceInt;
 			
 			// calcul frequence cardiaque maximale = 191.5 - 0.007 x age
 			
 			//System.out.println("Frequence max = "+ (191.5-(0.007*Math.sqrt(age))));			
-			return (int) (191.5-(0.007*Math.sqrt(age)));
-			
-		}
-		
-		
-
-		
+			return (int) (191.5-(0.007*Math.sqrt(age)));		
+		}		
 	}
-	
-
 	
 	
 	
