@@ -1,4 +1,4 @@
-package com.assisenior.chat;
+package com.assisenior.appli;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -13,6 +13,11 @@ public class Appli extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static Set<HttpSession> sessions = Collections.synchronizedSet(new HashSet<HttpSession>());
+	
+	public static void launchAppli() {
+		ThreadValues z = new ThreadValues();
+		z.start();
+	}
 
 	public static void synchroActions (String message, HttpSession session) throws IOException {
 		synchronized(sessions) {
@@ -37,8 +42,7 @@ public class Appli extends HttpServlet {
 		return false;
 	}
 	
-	public static void addSessionConnected (HttpSession session) {
-		System.out.println("Add session " + session.getId());	
+	public static void addSessionConnected (HttpSession session) {	
 		sessions.add(session);
 	}
 	

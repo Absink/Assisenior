@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.assisenior.chat.Appli;
+import com.assisenior.appli.Appli;
 
 /**
  * Servlet implementation class WelcomeServlet
@@ -41,7 +41,7 @@ public class WelcomeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if(!Appli.authentificatedSession(session)) {
-			System.out.println("non authentifié");
+			System.out.println("non authentifiï¿½");
 			this.getServletContext().getRequestDispatcher("/login").forward( request, response );
 		} else {
 			title = "Accueil";

@@ -29,9 +29,7 @@ public class DetectionChuteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		HttpSession session = request.getSession();		
 		System.out.println("Launch 'detectionChute' servlet");
-		// requette http://localhost:8080/assisenior/detection_chute?name=msgrecupere
-		System.out.println("test: " + request.getParameter("name"));
-		
+		// requette http://localhost:8080/assisenior/detection_chute?name=msgrecupere		
 		DetectionChuteService.dataChute(1,  2,  3);
 		
 		

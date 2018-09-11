@@ -2,11 +2,9 @@ package com.assisenior.service;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import com.assisenior.model.AssistedPerson;
 import com.assisenior.model.Contact;
@@ -27,9 +25,6 @@ public class AlertService {
 	
 	@PersistenceContext
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("assisenior");		
-	private static EntityManager em = factory.createEntityManager();
-	private static Query query;
-	
 		
 	public static void alerter (int typeIncident, int criticite, int idAssistedPerson) {				
 		String incident = null;
@@ -51,7 +46,7 @@ public class AlertService {
 	private static void appelSecours(String incident) {
 		System.out.println("[ASSISENIOR] APPEL SECOURS");
 		/* TODO : 
-		 * - récupérer le tel des secours
+		 * - recuperer le tel des secours
 		 * - appel secours
 		 */
 	}
@@ -59,13 +54,13 @@ public class AlertService {
 	private static void appelProche(String incident, AssistedPerson person) {
 		System.out.println("[ASSISENIOR] APPEL PROCHES");
 		
-		// Récuperation de la liste de contacts
+		// Recuperation de la liste de contacts
 		List<Contact> contacts = ContactService.ListForPerson(person.getId());
 		int countAppel = 0;
 		int priority = 1;
 		boolean reponseContact = false;
 		
-		// Appel des contacts par ordre de priorité
+		// Appel des contacts par ordre de priorite
 		while(!reponseContact && contacts.size() != countAppel) {
 			for (Contact c: contacts) {
 				if(c.getPriority()==priority) {
@@ -97,7 +92,7 @@ public class AlertService {
 			e.printStackTrace();
 		}
 		
-		// Test réponse pour simulation
+		// Test reponse pour simulation
 		if(c.getPhone().equals("0203010203"))
 			return true;
 		else

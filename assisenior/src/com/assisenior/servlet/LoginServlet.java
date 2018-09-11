@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.assisenior.chat.Appli;
+import com.assisenior.appli.Appli;
 import com.assisenior.model.Contact;
 import com.assisenior.service.ContactService;
 
@@ -37,11 +37,9 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		HttpSession session = request.getSession();
-		
-		Appli.connected(session);
-		
-		
+		Appli.launchAppli();
+		HttpSession session = request.getSession();		
+		Appli.connected(session);			
 		boolean connected = session.getAttribute("connected") != null;
 
 		if(connected){

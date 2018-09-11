@@ -59,23 +59,20 @@ public class AssistedPerson implements Serializable {
 		this.phone = phone;
 	}
 
-	public int getMaximumHeartRate() {
-		
-		
-		
+	public int getMaximumHeartRate() {		
 		if (this.getMaxHeartRateThreshold()!=0) {
-			// si une spécification médicale fait que le rythme max est donné en base
+			// si une specification medicale fait que le rythme max est donne en base
 			return this.getMaxHeartRateThreshold();
 		}else {
 			
 			// calcul de l'age
 			
-				//récupérer année de naissance
+				//recuperer annee de naissance
 			String dateNaissance = this.getDdnaissance();
 			String anneeNaissance=dateNaissance.substring(0, 3);
 			int anneeNaissanceInt=Integer.parseInt(anneeNaissance);
 			
-				//récupérer année en cours
+				//recuperer annee en cours
 			
 			Calendar c = Calendar.getInstance();
 			int year = c.get(Calendar.YEAR);
@@ -83,9 +80,9 @@ public class AssistedPerson implements Serializable {
 			
 			int age=year-anneeNaissanceInt;
 			
-			// calcul fréquence cardiaque maximale = 191.5 - 0.007 x âge²
+			// calcul frequence cardiaque maximale = 191.5 - 0.007 x age
 			
-			System.out.println("Fréquence max = "+ (191.5-(0.007*Math.sqrt(age))));			
+			//System.out.println("Frequence max = "+ (191.5-(0.007*Math.sqrt(age))));			
 			return (int) (191.5-(0.007*Math.sqrt(age)));
 			
 		}

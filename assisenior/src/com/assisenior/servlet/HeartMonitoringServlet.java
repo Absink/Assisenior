@@ -31,9 +31,8 @@ public class HeartMonitoringServlet extends HttpServlet {
 		HttpSession session = request.getSession();		
 		System.out.println("Launch 'heartMonitoring' servlet");
 		// requete http://localhost:8080/assisenior/heartMonitoring?beat=59
-		System.out.println("test: " + request.getParameter("beat"));
 		int beat = Integer.parseInt(request.getParameter("beat"));
-		HeartMonitoringService.heartMonitoring(beat);;
+		HeartMonitoringService.controlHeartBeat(beat);
 		
 		
 	}

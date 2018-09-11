@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.assisenior.model.AssistedPerson;
-import com.assisenior.model.Contact;
 
 public class AssistedPersonService {
 	
