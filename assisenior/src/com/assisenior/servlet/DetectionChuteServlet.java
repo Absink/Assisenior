@@ -30,8 +30,6 @@ public class DetectionChuteServlet extends HttpServlet {
 		HttpSession session = request.getSession();		
 		System.out.println("Launch 'detectionChute' servlet");
 		// requette http://localhost:8080/assisenior/detection_chute?name=msgrecupere		
-		DetectionChuteService.dataChute(1,  2,  3);
-		
-		
+		DetectionChuteService.controlChute(1,2,3);		
 	}
 }

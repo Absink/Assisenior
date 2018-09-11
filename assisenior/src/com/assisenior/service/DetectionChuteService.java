@@ -1,25 +1,19 @@
 package com.assisenior.service;
 
-import java.util.Iterator;
-import java.util.List;
-
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+
+import com.assisenior.model.AssistedPerson;
 
 public class DetectionChuteService {
 	
 	@PersistenceContext
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("assisenior");
 	
-	private static EntityManager em = factory.createEntityManager();
-	private static Query query;
-	
-	
-	public static void dataChute (float alpha, float beta, float gamma) {
-		System.out.println("[ASSISENIOR] APPEL SECOURS");
+	public static void controlChute (float alpha, float beta, float gamma) {
+		if(alpha==0 && beta==0 && gamma==0) {
+			AlertService.alerter(1, 2, AssistedPerson.getInstance().getId());
+		}
 	}
-
 }

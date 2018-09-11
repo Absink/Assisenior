@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.assisenior.service.DetectionChuteService;
 import com.assisenior.service.HeartMonitoringService;
 
 public class ThreadValues extends Thread {
@@ -28,6 +29,9 @@ public class ThreadValues extends Thread {
 					String[] value = values.split(";");
 					if(value[0].equals("rythmeCardiaque")) {
 						HeartMonitoringService.controlHeartBeat(Integer.parseInt(value[1]));
+					}
+					if(value[0].equals("detectChute")) {
+						DetectionChuteService.controlChute(Integer.parseInt(value[1]), Integer.parseInt(value[2]), Integer.parseInt(value[3]));
 					}
 				}
 				fichierSource.close();  
