@@ -41,7 +41,6 @@ public class WelcomeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		if(!Appli.authentificatedSession(session)) {
-			System.out.println("non authentifi�");
 			this.getServletContext().getRequestDispatcher("/login").forward( request, response );
 		} else {
 			title = "Accueil";

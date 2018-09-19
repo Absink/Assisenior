@@ -6,8 +6,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
+import com.assisenior.appli.Appli;
 import com.assisenior.model.AssistedPerson;
 import com.assisenior.model.Contact;
+import com.assisenior.model.Emergency;
 
 public class AlertService {
 	
@@ -26,29 +28,45 @@ public class AlertService {
 	@PersistenceContext
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("assisenior");		
 		
+	public static boolean alertLaunched = false;
+	
 	public static void alerter (int typeIncident, int criticite, int idAssistedPerson) {				
-		String incident = null;
-		switch(typeIncident) {
-			case 1: incident = "Chute";
-			case 2: incident = "Appel a l'aide";
-			case 3: incident = "Immobilité longue dans une pièce";
-			case 4: incident = "Problème cardiaque";
-			case 5: incident = "Sortie du pèrimètre exterieur";
-		}
-		AssistedPerson assistedPerson = AssistedPersonService.findById(idAssistedPerson);
-		if(criticite == 1) {
-			appelSecours(incident);
-		} else if (criticite == 2) {
-			appelProche(incident, assistedPerson);
-		}
+		if (!alertLaunched) {
+			String incident = null;
+			switch(typeIncident) {
+				case 1: incident = "Chute";
+				case 2: incident = "Appel a l'aide";
+				case 3: incident = "Immobilité longue dans une pièce";
+				case 4: incident = "Problème cardiaque";
+				case 5: incident = "Sortie du pèrimètre exterieur";
+			}
+			AssistedPerson assistedPerson = AssistedPersonService.findById(idAssistedPerson);
+			if(criticite == 1) {
+				appelSecours(incident, assistedPerson);
+			} else if (criticite == 2) {
+				appelProche(incident, assistedPerson);
+			}
+		}	
+		alertLaunched = true;
 	}
 	
-	private static void appelSecours(String incident) {
+	private static void appelSecours(String incident, AssistedPerson person) {
 		System.out.println("[ASSISENIOR] APPEL SECOURS");
-		/* TODO : 
-		 * - recuperer le tel des secours
-		 * - appel secours
-		 */
+		
+		// Recuperation de la liste des secours
+		Emergency emergency = EmergencyService.RecupEmergency(person.getId());
+		String telephone = emergency.getPhone();
+			
+		// Appel des secours
+		System.out.println("[ASSISENIOR] NUMEROTAION DU " + telephone + "...");
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("[ASSISENIOR] COMMUNICATION ETABLI AVEC LES SECOURS");
+		
 	}
 	
 	private static void appelProche(String incident, AssistedPerson person) {
@@ -78,7 +96,7 @@ public class AlertService {
 		// Appel des secours
 		if(!reponseContact) {
 			System.out.println("[ASSISENIOR] AUCUNE REPONSES DES CONTACTS");
-			appelSecours(incident);
+			appelSecours(incident, person);
 		}			
 	}
 	

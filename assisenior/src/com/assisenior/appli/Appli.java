@@ -23,7 +23,6 @@ public class Appli extends HttpServlet {
 		synchronized(sessions) {
 			for(HttpSession client : sessions) {				
 				if (!client.equals(session)) {
-					System.out.println("synchronize all sessions");
 					client.setAttribute("messages", message);
 				}
 			}

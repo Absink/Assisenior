@@ -20,6 +20,8 @@ public class ContactService {
 	
 		
 	public static List<Contact> ListForPerson(int idPerson) {
+		// temp pour video
+		idPerson = 1;
 		query = em.createQuery("SELECT c FROM Contact c WHERE c.for_person=" + idPerson);
 		return (List) query.getResultList();
 	}

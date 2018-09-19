@@ -1,10 +1,10 @@
 package com.assisenior.appli;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import com.assisenior.service.AlertService;
 import com.assisenior.service.DetectionChuteService;
 import com.assisenior.service.HeartMonitoringService;
 
@@ -16,8 +16,8 @@ public class ThreadValues extends Thread {
 	
 	public void run() {
 		System.out.println("[ASSISENIOR] START APPLICATION");
+		AlertService.alertLaunched = false;
 		while(true) {
-			//System.out.println("Lecture du fichier");
 			try {
 				// Lecture dans le fichier de données dataShared.csv
 				// ATTENTION - PATH A MODIFIER !!!
@@ -40,7 +40,7 @@ public class ThreadValues extends Thread {
 				e1.printStackTrace();
 			}
 			
-			
+			// Time between read data file
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
