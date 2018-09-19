@@ -34,13 +34,14 @@ public class AlertService {
 		if (!alertLaunched) {
 			String incident = null;
 			switch(typeIncident) {
-				case 1: incident = "Chute";
+				case 1: incident = "Chute Detecte";
 				case 2: incident = "Appel a l'aide";
 				case 3: incident = "Immobilité longue dans une pièce";
 				case 4: incident = "Problème cardiaque";
 				case 5: incident = "Sortie du pèrimètre exterieur";
 			}
 			AssistedPerson assistedPerson = AssistedPersonService.findById(idAssistedPerson);
+			System.out.println("[ASSISENIOR] INCIDENT: " + incident);
 			if(criticite == 1) {
 				appelSecours(incident, assistedPerson);
 			} else if (criticite == 2) {
