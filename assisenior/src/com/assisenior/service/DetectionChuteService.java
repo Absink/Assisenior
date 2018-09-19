@@ -23,9 +23,18 @@ public class DetectionChuteService {
 			c = gamma;
 		} else {
 		
-		// Traitement de calculs
-			if(alpha==0 && beta==0 && gamma==0) {
+			// Traitement de calculs v1
+			/*if(alpha==0 && beta==0 && gamma==0) {
 				AlertService.alerter(1, 2, AssistedPerson.getInstance().getId());
+			}*/
+			
+			// Traitement de calculs v2
+			if((c-gamma) > 20 || (gamma-c) > 20) {
+				AlertService.alerter(1, 2, AssistedPerson.getInstance().getId());
+			} else {
+				a = alpha;
+				b = beta;
+				c = gamma;
 			}
 			
 			
